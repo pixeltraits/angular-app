@@ -1,0 +1,34 @@
+<header class="navbar-wrapper">
+  <nav class="navbar" [attr.aria-label]="'nav.ariaLabel' | translate">
+    <div class="navbar-start">
+      <a class="brand" routerLink="/dashboard" [attr.aria-label]="'nav.home.ariaLabel' | translate">MonApp</a>
+
+      <ul class="nav-links" role="list">
+        <li>
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+            <ds-icon icon="house" size="sm" />
+            {{ 'nav.dashboard' | translate }}
+          </a>
+        </li>
+        @if (isAdmin()) {
+          <li>
+            <a class="nav-link" routerLink="/users" routerLinkActive="active">
+              <ds-icon icon="user" size="sm" />
+              {{ 'nav.users' | translate }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <button
+      class="logout-btn"
+      type="button"
+      (click)="logoutClick.emit()"
+      [attr.aria-label]="'nav.logout.ariaLabel' | translate"
+    >
+      <ds-icon icon="right-from-bracket" size="sm" />
+      <span>{{ 'nav.logout.label' | translate }}</span>
+    </button>
+  </nav>
+</header>

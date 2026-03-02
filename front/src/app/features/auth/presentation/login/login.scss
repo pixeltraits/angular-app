@@ -1,0 +1,43 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--mat-sys-surface-container);
+}
+
+.login-card {
+  background: var(--mat-sys-surface);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--mat-sys-level2);
+
+  h1 {
+    margin: 0 0 1.5rem;
+    text-align: center;
+    font: var(--mat-sys-headline-small);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    button[type='submit'] {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.login-error {
+  color: var(--mat-sys-error);
+  font: var(--mat-sys-body-small);
+  text-align: center;
+  margin: 0 0 0.5rem;
+}

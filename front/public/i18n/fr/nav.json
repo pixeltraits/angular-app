@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "ariaLabel": "Navigation principale",
+    "home": { "ariaLabel": "Accueil" },
+    "dashboard": "Dashboard",
+    "users": "Utilisateurs",
+    "logout": {
+      "ariaLabel": "Se déconnecter",
+      "label": "Déconnexion"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "users": {
+    "title": "Utilisateurs",
+    "add": "Ajouter un utilisateur",
+    "loading": "Chargement…",
+    "empty": "Aucun utilisateur trouvé.",
+    "table": { "ariaLabel": "Liste des utilisateurs" },
+    "col": {
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "email": "Email",
+      "role": "Rôle",
+      "actions": "Actions"
+    },
+    "edit": { "ariaLabel": "Modifier" }
+  },
+  "userForm": {
+    "title": {
+      "create": "Créer un utilisateur",
+      "edit": "Modifier un utilisateur"
+    },
+    "ariaLabel": "Formulaire utilisateur",
+    "firstname": {
+      "label": "Prénom",
+      "required": "Le prénom est requis."
+    },
+    "lastname": {
+      "label": "Nom",
+      "required": "Le nom est requis."
+    },
+    "email": {
+      "label": "Email",
+      "required": "L'email est requis.",
+      "invalid": "Format d'email invalide."
+    },
+    "password": {
+      "label": "Mot de passe",
+      "required": "Le mot de passe est requis.",
+      "minlength": "Le mot de passe doit contenir au moins 8 caractères."
+    },
+    "role": {
+      "label": "Rôle",
+      "user": "Utilisateur",
+      "admin": "Admin"
+    },
+    "cancel": "Annuler",
+    "submit": {
+      "create": "Créer l'utilisateur",
+      "edit": "Modifier",
+      "creating": "Création en cours…",
+      "editing": "Modification en cours…"
+    }
+  }
+}

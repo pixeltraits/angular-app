@@ -1,0 +1,73 @@
+<ds-dialog>
+  <h2 dsDialogTitle>
+    {{ (isEditMode ? 'userForm.title.edit' : 'userForm.title.create') | translate }}
+  </h2>
+
+  <form
+    dsDialogContent
+    [formGroup]="form"
+    novalidate
+    [attr.aria-label]="'userForm.ariaLabel' | translate"
+  >
+    <div class="form-row">
+      <mat-form-field dsFormField appearance="outline">
+        <mat-label>{{ 'userForm.firstname.label' | translate }}</mat-label>
+        <input dsInput type="text" formControlName="firstname" autocomplete="given-name" />
+        @if (form.controls.firstname.hasError('required')) {
+          <mat-error>{{ 'userForm.firstname.required' | translate }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field dsFormField appearance="outline">
+        <mat-label>{{ 'userForm.lastname.label' | translate }}</mat-label>
+        <input dsInput type="text" formControlName="lastname" autocomplete="family-name" />
+        @if (form.controls.lastname.hasError('required')) {
+          <mat-error>{{ 'userForm.lastname.required' | translate }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <mat-form-field dsFormField appearance="outline">
+      <mat-label>{{ 'userForm.email.label' | translate }}</mat-label>
+      <input dsInput type="email" formControlName="email" autocomplete="email" />
+      @if (form.controls.email.hasError('required')) {
+        <mat-error>{{ 'userForm.email.required' | translate }}</mat-error>
+      } @else if (form.controls.email.hasError('email')) {
+        <mat-error>{{ 'userForm.email.invalid' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    @if (!isEditMode) {
+      <mat-form-field dsFormField appearance="outline">
+        <mat-label>{{ 'userForm.password.label' | translate }}</mat-label>
+        <input dsInput type="password" formControlName="password" autocomplete="new-password" />
+        @if (form.controls.password.hasError('required')) {
+          <mat-error>{{ 'userForm.password.required' | translate }}</mat-error>
+        } @else if (form.controls.password.hasError('minlength')) {
+          <mat-error>{{ 'userForm.password.minlength' | translate }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field dsFormField appearance="outline">
+        <mat-label>{{ 'userForm.role.label' | translate }}</mat-label>
+        <mat-select dsSelect formControlName="roles">
+          <mat-option value="user">{{ 'userForm.role.user' | translate }}</mat-option>
+          <mat-option value="admin">{{ 'userForm.role.admin' | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    }
+
+    @if (error()) {
+      <p class="form-error" role="alert">{{ error() }}</p>
+    }
+  </form>
+
+  <div dsDialogActions>
+    <button dsButton="secondary" type="button" (click)="cancel()">
+      {{ 'userForm.cancel' | translate }}
+    </button>
+    <button dsButton="primary" type="button" (click)="submit()" [disabled]="isLoading()">
+      {{ (isLoading() ? (isEditMode ? 'userForm.submit.editing' : 'userForm.submit.creating') : (isEditMode ? 'userForm.submit.edit' : 'userForm.submit.create')) | translate }}
+    </button>
+  </div>
+</ds-dialog>

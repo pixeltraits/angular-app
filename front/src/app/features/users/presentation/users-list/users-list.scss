@@ -1,0 +1,36 @@
+.users-page {
+  padding: 2rem;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+
+  h1 {
+    margin: 0;
+    font: var(--mat-sys-headline-small);
+  }
+}
+
+.actions-cell {
+  width: 1px;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  min-width: unset;
+  padding: 0.25rem 0.5rem;
+}
+
+.status-message {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+  margin: 2rem 0;
+  text-align: center;
+
+  &.error {
+    color: var(--mat-sys-error);
+  }
+}

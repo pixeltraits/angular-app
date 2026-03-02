@@ -1,0 +1,52 @@
+<div class="users-page">
+  <div class="page-header">
+    <h1>{{ 'users.title' | translate }}</h1>
+    <button dsButton="primary" type="button" (click)="openCreateDialog()">
+      <ds-icon icon="plus" />
+      {{ 'users.add' | translate }}
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <p class="status-message">{{ 'users.loading' | translate }}</p>
+  } @else if (error()) {
+    <p class="status-message error" role="alert">{{ error() }}</p>
+  } @else if (users().length === 0) {
+    <p class="status-message">{{ 'users.empty' | translate }}</p>
+  } @else {
+    <div dsResponsiveTableContainer>
+      <table dsResponsiveTable [attr.aria-label]="'users.table.ariaLabel' | translate">
+        <thead>
+          <tr>
+            <th dsResponsiveTableTh scope="col">{{ 'users.col.firstname' | translate }}</th>
+            <th dsResponsiveTableTh scope="col">{{ 'users.col.lastname' | translate }}</th>
+            <th dsResponsiveTableTh scope="col">{{ 'users.col.email' | translate }}</th>
+            <th dsResponsiveTableTh scope="col">{{ 'users.col.role' | translate }}</th>
+            <th dsResponsiveTableTh scope="col">{{ 'users.col.actions' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users(); track user.id) {
+            <tr>
+              <td dsResponsiveTableTd>{{ user.firstname }}</td>
+              <td dsResponsiveTableTd>{{ user.lastname }}</td>
+              <td dsResponsiveTableTd>{{ user.email }}</td>
+              <td dsResponsiveTableTd>{{ user.roles }}</td>
+              <td dsResponsiveTableTd class="actions-cell">
+                <button
+                  dsButton="secondary"
+                  type="button"
+                  class="icon-btn"
+                  [attr.aria-label]="('users.edit.ariaLabel' | translate) + ' ' + user.firstname + ' ' + user.lastname"
+                  (click)="openEditDialog(user)"
+                >
+                  <ds-icon icon="pen" />
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

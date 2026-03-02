@@ -1,0 +1,51 @@
+<main class="login-page">
+  <div class="login-card">
+    <h1>{{ 'login.title' | translate }}</h1>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+      novalidate
+      [attr.aria-label]="'login.form.ariaLabel' | translate"
+    >
+      <mat-form-field dsFormField appearance="outline">
+        <mat-label>{{ 'login.email.label' | translate }}</mat-label>
+        <input dsInput type="email" formControlName="email" autocomplete="email" />
+        @if (form.controls.email.hasError('required')) {
+          <mat-error>{{ 'login.email.required' | translate }}</mat-error>
+        } @else if (form.controls.email.hasError('email')) {
+          <mat-error>{{ 'login.email.invalid' | translate }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field dsFormField appearance="outline">
+        <mat-label>{{ 'login.password.label' | translate }}</mat-label>
+        <input
+          dsInput
+          [type]="showPassword() ? 'text' : 'password'"
+          formControlName="password"
+          autocomplete="current-password"
+        />
+        <button
+          type="button"
+          matSuffix
+          (click)="togglePassword()"
+          [attr.aria-label]="(showPassword() ? 'login.password.hide' : 'login.password.show') | translate"
+        >
+          <ds-icon [icon]="showPassword() ? 'eye-slash' : 'eye'" />
+        </button>
+        @if (form.controls.password.hasError('required')) {
+          <mat-error>{{ 'login.password.required' | translate }}</mat-error>
+        }
+      </mat-form-field>
+
+      @if (error()) {
+        <p class="login-error" role="alert">{{ error() }}</p>
+      }
+
+      <button dsButton="primary" type="submit" [disabled]="isLoading()">
+        {{ (isLoading() ? 'login.submit.loading' : 'login.submit.idle') | translate }}
+      </button>
+    </form>
+  </div>
+</main>
